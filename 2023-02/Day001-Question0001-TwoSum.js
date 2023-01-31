@@ -4,7 +4,7 @@
   You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
   You can return the answer in any order.
-  
+
   Example 1:
 
   Input: nums = [2,7,11,15], target = 9
@@ -21,9 +21,24 @@
 */
 
 let twoSum = function (nums, target) {
+  // 解法二
+  let res = [];
+  
   for (let i = 0; i < nums.length; i++) {
-    for (let j = nums.length - 1; j > 0; j--) {
-      if (nums[i] + nums[j] === target && i !== j) return [i, j];
+    let diff = target - nums[i];
+
+    if (diff in res) {
+      return [res[diff], i];
     }
+    res[nums[i]] = i;
   }
+
+  /*
+    // 解法一
+    for (let i = 0; i < nums.length; i++) {
+      for (let j = nums.length - 1; j > 0; j--) {
+        if (nums[i] + nums[j] === target && i !== j) return [i, j];
+      }
+    }
+  */
 };
