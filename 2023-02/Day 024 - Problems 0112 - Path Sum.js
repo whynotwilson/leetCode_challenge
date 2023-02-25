@@ -39,6 +39,18 @@
  * @return {boolean}
  */
 var hasPathSum = function (root, targetSum) {
+
+    if (!root) return false;
+
+    targetSum -= root.val;
+
+    if (!root.left && !root.right) return !targetSum;
+
+    return (
+        hasPathSum(root.left, targetSum) || hasPathSum(root.right, targetSum)
+    );
+
+    /*
     if (root === null) return false;
     else if (root.left === null && root.right !== null)
         return calculate(root.right, root.val);
@@ -66,4 +78,5 @@ var hasPathSum = function (root, targetSum) {
             return calculate(root.left, preSum + root.val);
         }
     }
+    */
 };
